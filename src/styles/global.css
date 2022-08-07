@@ -1,0 +1,17 @@
+.star-text{
+    font-family: 'Sawarabi Gothic', sans-serif;
+    color: yellow;
+}
+
+.bg-star{
+    background-color: black;
+}
+
+.bg-stardom{
+    background-color: black;
+    height: 100vh;
+}
+
+.btn-bg-star{
+    background-color: rgb(53, 48, 48);
+}

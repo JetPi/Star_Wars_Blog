@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import PropTypes, { element, number } from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
+import "../../styles/global.css";
 
 export const Favorites = props => {
 	const { store, actions } = useContext(Context);
@@ -9,26 +10,26 @@ export const Favorites = props => {
     
 	return (
 		<>
-		<div className="dropdown">
-				<button className="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="false" aria-expanded="false">
-					Dropdown button
+		<div className="dropstart">
+				<button className="btn btn-bg-star star-text" type="button" data-bs-toggle="dropdown" data-bs-auto-close="false" aria-expanded="false">
+					Favorites
 				</button>
-				<ul className="dropdown-menu">   
-					<li>Characters</li>
+				<ul className="dropdown-menu btn-bg-star">   
+					<li className="bg-star star-text">Characters</li>
 					{store.favoriteChars.map((element, index)=>{
 						return(
-							<div className="col-12 d-flex justify-content-between" key={index}>
-								<li className="list-group-item d-flex justify-content-between">{element.name} </li>
-								<button className="btn btn-primary" onClick={() => actions.deleteFavoriteChar(index)}><i className="fa-solid fa-trash"></i></button>
+							<div className="col-12 d-flex justify-content-between bg-star" key={index}>
+								<li className="list-group-item d-flex justify-content-between bg-star star-text">{element.name}</li>
+								<button className="btn btn-bg-star star-text" onClick={() => actions.deleteFavoriteChar(index)}><i className="fa-solid fa-trash"></i></button>
 							</div>
 						)
 					})}
-					<li>Planets</li>
+					<li className="bg-star star-text">Planets</li>
 					{store.favoritePlans.map((element, index)=>{
 						return(
-							<div className="col-12 d-flex justify-content-between" key={index}>
-								<li className="list-group-item d-flex justify-content-between">{element.name} </li>
-								<button className="btn btn-primary" onClick={() => actions.deleteFavoritePlan(index)}><i className="fa-solid fa-trash"></i></button>
+							<div className="col-12 d-flex justify-content-between bg-star" key={index}>
+								<li className="list-group-item d-flex justify-content-between bg-star star-text">{element.name} </li>
+								<button className="btn btn-bg-star star-text" onClick={() => actions.deleteFavoritePlan(index)}><i className="fa-solid fa-trash"></i></button>
 							</div>
 						)
 					})}

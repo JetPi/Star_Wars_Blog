@@ -1,3 +1,7 @@
-.cardScroll{
+.card-scroll{
     overflow-x: scroll;
+}
+
+.card-style{
+    min-height: 25vh;
 }

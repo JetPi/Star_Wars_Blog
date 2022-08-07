@@ -17,95 +17,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-
-			// //fetch list of favorites
-			// getList: async () => {
-			// 	const store = getStore()
-			// 	try{
-			// 		//fetch and push data into task lisk
-			// 		let response = await fetch(`${store.listURL}`)
-			// 		if(response.ok){
-			// 		let data = await response.json()
-			// 			if(response.status !== 404){
-			// 				setStore({...store,
-			// 					listApi: data
-			// 				})
-			// 			}
-			// 		//if there is no data to push, post a new, empty list. Then recurse
-			// 		}else{
-			// 			let responseTodos = await fetch(`${store.listURL}` , 
-			// 			{
-			// 				method:"POST",
-			// 				headers: {
-			// 					"Content-Type":"application/json"
-			// 				},
-			// 				body: JSON.stringify([])
-			// 			})
-			// 			if(responseTodos.ok){
-			// 				getActions().getList()
-			// 			}
-			// 		}
-			// 	//Catch error
-			// 	}catch(error){
-			// 		console.log(`Explote este es el error: ${error}`)
-			// 	}
-			// },
-			// /* ****************************************** */
-		
-			// //Add a task to list with APIs
-			// addTaskToList: async (event) =>{
-			// 	const store = getStore()
-			// 	try{
-			// 	let response = await fetch(`${listURL}`, 
-			// 	{
-			// 		method:"PUT",
-			// 		headers: {
-			// 			"Content-Type":"application/json"
-			// 		},
-			// 		//push listTask and the current task into the API
-			// 		body: JSON.stringify({
-			// 			...store, 
-			// 			listApi: task
-			// 		})
-			// 	})
-			// 	//Check if API is ok, then clear task and update listTask
-			// 	if(response.ok){
-			// 		getList()
-			// 	}
-			// 	}catch(error){
-			// 		console.log(`Explote este es el error: ${error}`)
-			// 	}
-			// },
-
-			// //Delete task from list of favorites
-			// deleteTask: async (id) =>{
-			// 	let newList = listTask.filter((item, index) => {
-			// 		if(id !== index){
-			// 			return item
-			// 		}
-			// 	})
-			// 	try {
-			// 		let response = await fetch(`${store.listURL}`,
-			// 		{
-			// 			method: "PUT",
-			// 			headers: {
-			// 				"Content-Type": "application/json"
-			// 			},
-			// 			body: JSON.stringify(newList)
-			// 		})
-			// 		if(response.ok){
-			// 			getList()
-			// 		}
-			// 	} catch (error) {
-			// 		console.log(`Explote este es el error: ${error}`)
-			// 	}
-			// },
-			/* **************************************** */
-
 			//add favorite characters
 			addFavoriteChar: (id) =>{
 				const store = getStore()
@@ -155,7 +66,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			loadCharData: async () => {
 				const store = getStore()
 				try {
-					let response = await fetch(`https://swapi.dev/api/people/`)
+					let response = await fetch(`${store.baseURL}${store.charURL}`)
 					if(response.ok){
 						let data = await response.json()
 						if(response.status != 404){
@@ -173,7 +84,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			loadPlanData: async () => {
 				const store = getStore()
 				try {
-					let response = await fetch(`https://swapi.dev/api/planets/`)
+					let response = await fetch(`${store.baseURL}${store.planURL}`)
 					if(response.ok){
 						let data = await response.json()
 						if(response.status != 404){
@@ -186,21 +97,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 			/* *********************************** */
-
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
-			}
 		}
 	};
 };

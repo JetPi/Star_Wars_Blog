@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop.jsx";
+import "../styles/global.css";
 
 import injectContext from "./store/appContext";
 
@@ -18,7 +19,7 @@ const Layout = (props) => {
 	const basename = process.env.BASENAME || "";
 
 	return (
-		<div>
+		<div className="bg-stardom">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
 					<Navbar />
