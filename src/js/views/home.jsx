@@ -19,7 +19,7 @@ export const Home = () =>
 						return(
 						<div className="col-4" key={index}>
 							<div className="card bg-star">
-								<img src="" className="card-img-top" alt="..."/>
+								<img src="https://w7.pngwing.com/pngs/302/601/png-transparent-lego-star-wars-anakin-skywalker-logo-jedi-star-wars-text-war-film.png" className="card-img-top" alt="..."/>
 								<div className="card-body">
 									<div className="d-flex flex-column align-items-center py-2">
 										<h5 className="card-title star-text">{element.name}</h5>
@@ -52,7 +52,7 @@ export const Home = () =>
 						return(
 						<div className="col-4" key={index}>
 							<div className="card bg-star">
-								<img src="" className="card-img-top" alt="..."/>
+								<img src="https://w7.pngwing.com/pngs/302/601/png-transparent-lego-star-wars-anakin-skywalker-logo-jedi-star-wars-text-war-film.png" className="card-img-top" alt="..."/>
 								<div className="card-body">
 									<div className="d-flex flex-column align-items-center py-2">
 										<h5 className="card-title star-text">{element.name}</h5> 
