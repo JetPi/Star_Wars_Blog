@@ -24,6 +24,8 @@ const injectContext = PassedComponent => {
 		useEffect(() => {
 			state.actions.loadCharData();
 			state.actions.loadPlanData();
+			state.actions.loadImageData();
+			state.actions.loadPlanetImageData();
 			// state.actions.getList();
 			/**
 			 * EDIT THIS!

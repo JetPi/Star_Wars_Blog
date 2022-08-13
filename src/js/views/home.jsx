@@ -7,6 +7,7 @@ import { Link, useParams } from "react-router-dom";
 export const Home = () => 
 	{
 		const { store, actions } = useContext(Context)
+		console.log(store.imageData)
 
 		return(
 			//Container of characters
@@ -19,7 +20,7 @@ export const Home = () =>
 						return(
 						<div className="col-4" key={index}>
 							<div className="card bg-star">
-								<img src="https://w7.pngwing.com/pngs/302/601/png-transparent-lego-star-wars-anakin-skywalker-logo-jedi-star-wars-text-war-film.png" className="card-img-top" alt="..."/>
+								<img src={store.imageData[index]} className="card-img-top" alt="..."/>
 								<div className="card-body">
 									<div className="d-flex flex-column align-items-center py-2">
 										<h5 className="card-title star-text">{element.name}</h5>
@@ -52,7 +53,7 @@ export const Home = () =>
 						return(
 						<div className="col-4" key={index}>
 							<div className="card bg-star">
-								<img src="https://w7.pngwing.com/pngs/302/601/png-transparent-lego-star-wars-anakin-skywalker-logo-jedi-star-wars-text-war-film.png" className="card-img-top" alt="..."/>
+								<img src={store.planetImageData[index]} className="card-img-top" alt="..."/>
 								<div className="card-body">
 									<div className="d-flex flex-column align-items-center py-2">
 										<h5 className="card-title star-text">{element.name}</h5> 

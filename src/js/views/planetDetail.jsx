@@ -25,6 +25,7 @@ export const PlanetDetail = () => {
 				<div className="col-12 fs-1 star-text">
 					{test.name}
 				</div>
+				<img src={store.planetImageData[params.id]} alt=""/>
 				<div className="row">
 					<div className="col-6 fs-3 star-text">
 						Rotation Period: {test.rotation_period} <br/>

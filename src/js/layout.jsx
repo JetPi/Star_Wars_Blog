@@ -19,7 +19,7 @@ const Layout = (props) => {
 	const basename = process.env.BASENAME || "";
 
 	return (
-		<div className="bg-stardom">
+		<div className="bg-stardom test">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
 					<Navbar />

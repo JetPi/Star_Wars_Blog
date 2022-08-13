@@ -5,11 +5,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			charURL: "people/",
 			planURL: "planets/",
 			listURL: "http://assets.breatheco.de/apis/fake/todos/user/starwars",
+			imgURL: "https://starwars-visualguide.com/assets/img/",
+			peopleURL: "characters",
 
 			//Gets the data for Characters and Planets
 			swapiChar:[],
 			swapiPlan:[],
-			// listApi:[],
+			imageData:[],
+			planetImageData:[],
 
 			//Gets id of favorites characters or planets for future recall
 			favoriteChars: [],
@@ -17,6 +20,65 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 
 		actions: {
+			//fetch character data
+			loadCharData: async () => {
+				const store = getStore()
+				try {
+					let response = await fetch(`${store.baseURL}${store.charURL}`)
+					if(response.ok){
+						let data = await response.json()
+						if(response.status != 404){
+							setStore({...store,
+								swapiChar: data.results})
+						}
+					}
+				} catch (error) {
+					console.log(`Time to check for errors. Error ${error}` )
+				}
+			},
+			/* ********************************* */
+
+			//get character images
+			loadImageData: async () => {
+				const store = getStore()
+				for (let i = 1; i <= 10; i++) {
+					setStore({...store,
+						imageData: [...store.imageData, `https://starwars-visualguide.com/assets/img/characters/${i}.jpg`]
+					})
+				}
+			},
+			/* ********************************* */
+
+			//get images for planets
+			loadPlanetImageData: async () => {
+				const store = getStore()
+				for (let i = 2; i <= 11; i++) {
+					setStore({...store,
+						planetImageData: [...store.planetImageData, `https://starwars-visualguide.com/assets/img/planets/${i}.jpg`]
+					})
+				}
+			},
+			/* ********************************* */
+
+			//fetch planet data
+			loadPlanData: async () => {
+				const store = getStore()
+				try {
+					let response = await fetch(`${store.baseURL}${store.planURL}`)
+					if(response.ok){
+						let data = await response.json()
+						if(response.status != 404){
+							setStore({...store,
+								swapiPlan: data.results})
+						}
+					}
+				} catch (error) {
+					console.log(`Time to check for errors. Error ${error}` )
+				}
+			},
+			/* *********************************** */
+
+
 			//add favorite characters
 			addFavoriteChar: (id) =>{
 				const store = getStore()
@@ -62,41 +124,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 			},
 
-			//fetch character data
-			loadCharData: async () => {
-				const store = getStore()
-				try {
-					let response = await fetch(`${store.baseURL}${store.charURL}`)
-					if(response.ok){
-						let data = await response.json()
-						if(response.status != 404){
-							setStore({...store,
-								swapiChar: data.results})
-						}
-					}
-				} catch (error) {
-					console.log(`Time to check for errors. Error ${error}` )
-				}
-			},
-			/* ********************************* */
-
-			//fetch planet data
-			loadPlanData: async () => {
-				const store = getStore()
-				try {
-					let response = await fetch(`${store.baseURL}${store.planURL}`)
-					if(response.ok){
-						let data = await response.json()
-						if(response.status != 404){
-							setStore({...store,
-								swapiPlan: data.results})
-						}
-					}
-				} catch (error) {
-					console.log(`Time to check for errors. Error ${error}` )
-				}
-			},
-			/* *********************************** */
+		
 		}
 	};
 };

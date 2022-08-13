@@ -23,6 +23,7 @@ export const CharacterDetail = props => {
 			<div className="col-12 fs-1 star-text">
 				{test.name}
 			</div>
+			<img src={store.imageData[params.id]} alt=""/>
 			<div className="row">
 				<div className="col-6 fs-3 star-text">
 					Birth Year: {test.birth_year} <br/>
